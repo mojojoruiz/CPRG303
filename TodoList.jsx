@@ -1,13 +1,13 @@
-// ToDoList.jsx file
+// ToDoList.jsx
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const ToDoList = () => {
+const ToDoList = ({ tasks }) => {
 return (
     <View>
-    <Text>Do laundry</Text>
-    <Text>Go to gym</Text>
-    <Text>Walk dog</Text>
+    {tasks.map((task, index) => (
+        <Text key={index}>{task}</Text>
+    ))}
     </View>
 );
 };

@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
-import ToDoForm from './ToDoForm';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './screens/HomeScreen';
+import AboutScreen from './screens/AboutScreen';
+
+const Stack = createStackNavigator();
 
 function App() {
-const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState([]);
 
-const addTask = (taskText) => {
+    const addTask = (taskText) => {
     setTasks([...tasks, taskText]);
 };
 
-return (
-    <div className="App">
-    <h1>ToDo List</h1>
-    <ToDoForm addTask={addTask} />
-    <ul>
-        {tasks.map((task, index) => (
-        <li key={index}>{task}</li>
-        ))}
-    </ul>
-    </div>
-);
+    return (
+    <NavigationContainer>
+        <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="About" component={AboutScreen} />
+        </Stack.Navigator>
+    </NavigationContainer>
+    );
 }
 
 export default App;

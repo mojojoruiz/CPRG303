@@ -1,24 +1,24 @@
+// ToDoForm.jsx
 import React, { useState } from 'react';
+import { View, TextInput, Button } from 'react-native';
 
 function ToDoForm({ addTask }) {
 const [taskText, setTaskText] = useState('');
 
-const handleSubmit = (event) => {
-    event.preventDefault();
+const handleSubmit = () => {
     addTask(taskText);
     setTaskText('');
 };
 
 return (
-    <form onSubmit={handleSubmit}>
-    <input
-        type="text"
+    <View>
+    <TextInput
         placeholder="Add a new task..."
         value={taskText}
-        onChange={(event) => setTaskText(event.target.value)}
+        onChangeText={setTaskText}
     />
-    <button type="submit">Add Task</button>
-    </form>
+    <Button title="Add Task" onPress={handleSubmit} />
+    </View>
 );
 }
 
